@@ -1,7 +1,6 @@
 # React-Navigation
 
-
-https://reactnavigation.org/docs/hello-react-navigation
+https://reactnavigation.org/docs/getting-started/
 
 ```bash
 yarn add @react-navigation/native
@@ -40,7 +39,7 @@ Without react-native-screens you will get the below error screen
 Modify android/app/src/main/java/<your package name>/**MainActivity.kt** or **MainActivity.java** file as below:
 
 
-**Java::** 
+**Java:** 
 
 `
 public class MainActivity extends ReactActivity {
@@ -55,7 +54,7 @@ public class MainActivity extends ReactActivity {
 
 ---------------------------------------------------------------------------------------
 
-**Kotlin::**
+**Kotlin:**
 `
 class MainActivity: ReactActivity() {
   // ...
@@ -69,9 +68,15 @@ class MainActivity: ReactActivity() {
 
 ---------------------------------------------------------------------------------------
 
-**Note :** for iOS —   $ `npx pod-install ios`
+**Note:** for iOS —   $ `npx pod-install ios`
 
 ---------------------------------------------------------------------------------------
 Without modify MainActivity we will get the below error
 
 <img src="https://github.com/kmraditya108/RNLearningApp/blob/main/assets/MainActivity.png" width="250">
+
+
+
+
+
+**Important:** <p>By default, React Navigation applies optimizations to screen components to prevent unnecessary renders. Using a render callback removes those optimizations. So if you use a render callback, you'll need to ensure that you use React.memo or React.PureComponent for your screen components to avoid performance issues.</p>
