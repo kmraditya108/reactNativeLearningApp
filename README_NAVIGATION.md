@@ -20,34 +20,47 @@ Without react-native-screens you will get the below error screen
 
 
 
+
+
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------------
 ## yarn add react-native-safe-area-context
 Without react-native-screens you will get the below error screen
 ![](https://github.com/kmraditya108/RNLearningApp/blob/main/assets/react-native-safe-area-context.png)
 
+
+
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------------
 Modify android/app/src/main/java/<your package name>/**MainActivity.kt** or **MainActivity.java** file as below:
 
 
-**Java::**
-public class MainActivity extends ReactActivity {
+**Java::** 
+
+`public class MainActivity extends ReactActivity {
   // ...
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
   }
   // ...
-}
+}`
+
 ---------------------------------------------------------------------------------------
 
 **Kotlin::**
-class MainActivity: ReactActivity() {
+`class MainActivity: ReactActivity() {
   // ...
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(null)
   }
   // ...
-}
+}`
+
 
 ---------------------------------------------------------------------------------------
 **Note :** for iOS —   $ `npx pod-install ios`
