@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, Button, Pressable, TouchableHighlight, FlatList, TextInput } from 'react-native';
-import SideMenu from "../common/SideMenu";
+import PopupModal from "../common/PopupModal";
 import { findAthMagicalNumber, findLCM } from "../../utils/findLCM";
 
 const numbers = [1, 2, 3, 4,];
@@ -12,7 +12,13 @@ const students = [
     { name: 'Katie', grade: 90 }
 ];
 
-const Home = (): React.ReactNode => {
+const Home = ({route, navigation}:any): React.ReactNode => {
+
+    const {username, password} = route.params;
+    console.log("Home navigatioln :: ", route.params);
+    console.log("1----Home navigatioln :: ", route);
+    
+
     const refB = useRef<TextInput | null>(null)
     const refC = useRef<TextInput | null>(null)
 
@@ -88,7 +94,14 @@ const Home = (): React.ReactNode => {
     }
     return (
         <View style={ss.container} onLayout={(e) => layoutHandler(e)}>
-            <View style={{ flex: 1 }}>
+            <Text style={{fontSize:35, fontWeight:'bold', color:'brown'}}>Home screen</Text>
+            <Text style={{fontSize:30, fontWeight:'bold', color:'brown', marginTop:100}}>{`Hi ${username}`}</Text>
+           
+            <TouchableOpacity style={ss.prassable} onPress={()=>navigation.goBack(2)}>
+                    <Text>Go To Login</Text>
+                </TouchableOpacity>
+
+            {/* <View style={{ flex: 1, marginTop: 200 }}>
                 <TextInput autoFocus returnKeyType="next" keyboardType="numeric" style={{ borderWidth: 1, padding: 10 }} placeholder="A here" onChangeText={e => setLCMVals({
                     ...LCMVals,
                     A: Number(e)
@@ -115,16 +128,7 @@ const Home = (): React.ReactNode => {
                 <TouchableHighlight style={ss.prassable} onPress={LCMHandler}>
                     <Text>LCMHandler</Text>
                 </TouchableHighlight>
-                <SideMenu />
-            </View>
-
-
-            {/* <View style={{ flex: 4 }}>
-                <FlatList
-                    data={students}
-                    renderItem={({item}) => <Item title={item}/>}
-                    keyExtractor={(item) => item.grade}
-                />
+                <PopupModal />
             </View> */}
         </View>
     )
