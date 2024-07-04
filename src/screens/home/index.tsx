@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, Button, Pressable, TouchableHighlight, FlatList, TextInput } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+
 import PopupModal from "../common/PopupModal";
 import { findAthMagicalNumber, findLCM } from "../../utils/findLCM";
 
@@ -13,14 +15,25 @@ const students = [
 ];
 
 const Home = ({route, navigation}:any): React.ReactNode => {
+    const loginState = useSelector(store => store.login);
 
     const {username, password} = route.params;
+
     console.log("Home navigatioln :: ", route.params);
     console.log("1----Home navigatioln :: ", route);
     
 
     const refB = useRef<TextInput | null>(null)
     const refC = useRef<TextInput | null>(null)
+
+
+
+    React.useEffect(() => {
+        console.log('Home page Login -state >> ', loginState);
+    
+      }, [loginState]);
+
+
 
     const layoutHandler = e => {
         // console.log(e);
