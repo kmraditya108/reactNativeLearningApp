@@ -1,12 +1,16 @@
 import React, { useRef, useState } from "react";
 import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, Button, Pressable, TouchableHighlight, FlatList, TextInput } from 'react-native';
-
+import {useSelector} from 'react-redux'
 import PopupModal from "../common/PopupModal";
+import LoginComponent from "./LoginComponent";
 
 
-type LoginProps = { username: string | null, password: string | null };
+export type LoginProps = { username: string | null, password: string | null };
 
 const Login = ({navigation}:any): React.ReactNode => {
+
+    const countState = useSelector(store => store.count.counterVal);
+
     const refB = useRef<TextInput | null>(null);
 
     const [loginTraits, setLoginTraits] = useState<LoginProps>({
@@ -27,10 +31,19 @@ const Login = ({navigation}:any): React.ReactNode => {
             navigation.navigate("Home", {username, password});
         }
     }
+
     return (
         <View style={ss.container}>
-            <Text style={ss.loginMainText}>Please login to the app</Text>
-            <View style={ss.formContainer}>
+            <Text style={ss.loginMainText}>Please login to the app, You have the counter:{countState}</Text>
+            <LoginComponent onSubmit={submitHandler} 
+            // formField = {setLoginTraits}
+            />
+
+
+
+
+            {/* <View style={{height:2, backgroundColor:'gray', marginVertical:10}}/> */}
+            {/* <View style={ss.formContainer}>
                 <TextInput
                     autoFocus
                     // onFocus={this.setFocus.bind(this, true)}
@@ -65,7 +78,7 @@ const Login = ({navigation}:any): React.ReactNode => {
 
             <TouchableOpacity style={ss.prassable} onPress={submitHandler}>
                     <Text>Submit</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
 
 

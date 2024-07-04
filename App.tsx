@@ -19,13 +19,27 @@ import {
   Header,
 } from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from './src/screens/AppNavigator';
+import { store } from './src/redux/stores';
+import { Provider } from 'react-redux';
+
+
+
+
+// redux <--react-redux is glue between --> react/react-native
+
+
+// react-redux is glue between redux and react framework
+
+// react-redux
+
+
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex:1
+    flex: 1
   };
 
   return (
@@ -34,20 +48,21 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      
-      <ScrollView
-        contentContainerStyle={ss.scrollContainer}
-        style={backgroundStyle}>
-        <AppNavigator/>
-      </ScrollView>
+      <Provider store={store}>
+        <ScrollView
+          contentContainerStyle={ss.scrollContainer}
+          style={backgroundStyle}>
+          <AppNavigator />
+        </ScrollView>
+      </Provider>
     </SafeAreaView>
   );
 }
 
 const ss = StyleSheet.create({
   scrollContainer: {
-    flex:1,
-    paddingHorizontal:5,
+    flex: 1,
+    paddingHorizontal: 5,
   },
 });
 
