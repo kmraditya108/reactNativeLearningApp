@@ -29,7 +29,6 @@ jobs:
         node-version: 14.x
         cache: 'npm'
     - run: |
-          # cd ./app_workspace_directory
           npm i
           npm run test
     
