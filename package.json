@@ -2,7 +2,13 @@
   "name": "RNLearningApp",
   "version": "0.0.1",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmraditya108/RNLearningApp.git"
+  },
   "scripts": {
+    "np": "np --no-publish",
+    "postversion": "react-native-version",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
