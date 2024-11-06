@@ -1,0 +1,56 @@
+name: Build and Deploy for dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  android-build: 
+    name: Android dev Build
+    runs-on: self-hosted
+    steps:
+      - name : Show self-hosted machine information
+      run: uname -a
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+      - name: Checkout repo from develop branch
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Install Dependencies
+        run: |
+          yarn install
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Execute Gradle Build
+        run: |
+          cd android
+          ./gradlew build
+      - name: Build android JS Bundle
+        run: |
+          yarn run package-android
+      - name: Delete Android build duplicate assets resource
+        run: yarn run delete-pics
+      - name: Install bundler
+        run: |
+          cd android
+          gem install bundler
+      - name: Install gem plugins
+        run: |
+          cd android
+          bundle install
+      - name: Run fastlane
+        run: |
+          cd android
+          bundle exec fastlane build_qa
