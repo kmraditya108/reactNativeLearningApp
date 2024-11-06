@@ -7,6 +7,8 @@ import {
   Alert,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+
 import { TypeOfFunction, decrement, increment, incrementVal, resetCount } from '../../redux/actions/countAction';
 import { SigninContext } from '../../contexts/SigninContext';
 import { Types } from '../../redux/actionTypes';
@@ -48,6 +50,7 @@ useEffect(() => {
           marginBottom: 20
         }}>
         <Text>Counter : {countState}</Text>
+        {/* <ActivityIndicator animating={t rue} color={MD2Colors.blue900} size={'large'}/> */}
       </View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', position: 'absolute', top: 10 }}>
         <TouchableOpacity onPress={() => handleIncrement()} style={ss.btn}>

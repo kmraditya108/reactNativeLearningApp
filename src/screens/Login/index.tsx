@@ -35,7 +35,8 @@ const Login = ({navigation}:any): React.ReactNode => {
     return (
         <View style={ss.container}>
             <Text style={ss.loginMainText}>Please login to the app, You have the counter:{countState}</Text>
-            <LoginComponent onSubmit={submitHandler} 
+            <LoginComponent 
+            onSubmit={submitHandler} 
             // formField = {setLoginTraits}
             />
 
