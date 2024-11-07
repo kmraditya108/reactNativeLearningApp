@@ -4,7 +4,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 
 // Sauce Labs API endpoint for TestFairy upload
-const API_URL = 'https://api.testfairy.com/v1/upload'; 
+const API_URL = 'https://upload.testfairy.com/api/upload';//'https://api.testfairy.com/v1/upload'; 
 
 // Replace with your Sauce Labs API key
 const API_KEY = '2bd31ac6-4202-463e-b376-a7dbbea02c2d'; // Keep this safe!
