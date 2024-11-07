@@ -1,0 +1,49 @@
+name: Build and Upload APK to Sauce Labs
+
+on:
+  push:
+    paths:
+      - "v1"
+    branches:
+      - main
+      - develop
+      - feat/modify_workflow
+
+env:
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  # main:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - name: Saucectl RUN
+  #       uses: saucelabs/saucectl-run-action@v4
+  #       with:
+  #         working-directory: v1
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build APK
+        run: ./gradlew assembleRelease # Adjust this command for your build process
+
+      - name: Upload APK to Sauce Labs TestFairy
+        run: node uploadToTestFairy.js
+        env:
+          SAUCE_LABS_API_KEY: ${{ secrets.SAUCE_LABS_API_KEY }}  # Store API Key in GitHub Secrets
