@@ -7,7 +7,7 @@ const FormData = require('form-data');
 const API_URL = 'https://upload.testfairy.com/api/upload';//'https://api.testfairy.com/v1/upload'; 
 
 // Replace with your Sauce Labs API key
-const API_KEY = '2bd31ac6-4202-463e-b376-a7dbbea02c2d'; // Keep this safe!
+const API_KEY = '98f029d755660818a5882c9b8d8987597cf583ab';//'2bd31ac6-4202-463e-b376-a7dbbea02c2d'; // Keep this safe!
 
 // The path to the APK file you want to upload
 const apkFilePath = path.resolve(__dirname, './android/app/build/outputs/apk/release/app-release_aditya.apk');// 'path/to/your/app.apk'); 
