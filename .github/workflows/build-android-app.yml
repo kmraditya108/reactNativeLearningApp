@@ -29,8 +29,17 @@ jobs:
         run: |
              cd android
              ./gradlew assembleRelease
-      - name: Upload application
-        uses: actions/upload-artifact@v3
-        with:
-          name: app
-          path: android/app/build/outputs/apk/release/app-release_aditya.apk
+      - name: Verify APK exists
+        run: |
+          ls android/app/build/outputs/apk/release
+      - name: Upload APK to Sauce Labs TestFairy
+        run: node uploadToTestFairy.js
+        env:
+          SAUCE_LABS_API_KEY: ${{ secrets.SAUCE_LABS_API_KEY }}
+      # - name: Upload application
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: app
+      #     path: android/app/build/outputs/apk/release/app-release.apk
+
+          
