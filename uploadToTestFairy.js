@@ -34,7 +34,7 @@ async function uploadAPK() {
 
     if (response.status === 200) {
       console.log('APK uploaded successfully!');
-      console.log('TestFairy URL:', response.data.url);
+      console.log('TestFairy URL:', console.log(response.data));
     } else {
       console.error('Failed to upload APK:', response.status, response.data);
       process.exit(1);
