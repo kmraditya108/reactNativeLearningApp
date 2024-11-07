@@ -41,7 +41,14 @@ jobs:
         run: npm install
 
       - name: Build APK
-        run: ./gradlew assembleRelease # Adjust this command for your build process
+        run: |
+          cd android
+          ./gradlew assembleRelease
+        # run: ./gradlew assembleRelease # Adjust this command for your build process
+          
+      - name: Verify APK exists
+        run: |
+          ls android/app/build/outputs/apk/release
 
       - name: Upload APK to Sauce Labs TestFairy
         run: node uploadToTestFairy.js
