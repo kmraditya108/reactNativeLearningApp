@@ -10,8 +10,8 @@ const API_URL = 'https://upload.testfairy.com/api/upload';//'https://api.testfai
 const API_KEY = '98f029d755660818a5882c9b8d8987597cf583ab';//'2bd31ac6-4202-463e-b376-a7dbbea02c2d'; // Keep this safe!
 
 // The path to the APK file you want to upload
-const apkFilePath = path.resolve(__dirname, './android/app/build/outputs/apk/release/app-release_aditya.apk');// 'path/to/your/app.apk'); 
-
+const apkFilePath = path.resolve(__dirname, 'android/app/build/outputs/apk/release/app-release.apk');// 'path/to/your/app.apk'); 
+// android/app/build/outputs/apk/release/app-release.apk
 // Function to upload the APK to Sauce Labs TestFairy
 async function uploadAPK() {
   // Make sure the APK file exists
