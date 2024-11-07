@@ -1,4 +1,4 @@
-name: "Build Android app from workflow"
+name: "Build and deploy Android app"
 
 on:
   push:
@@ -36,10 +36,5 @@ jobs:
         run: node uploadToTestFairy.js
         env:
           SAUCE_LABS_API_KEY: ${{ secrets.SAUCE_LABS_API_KEY }}
-      # - name: Upload application
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: app
-      #     path: android/app/build/outputs/apk/release/app-release.apk
 
           
